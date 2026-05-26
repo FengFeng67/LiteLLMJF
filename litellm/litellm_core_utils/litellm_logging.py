@@ -941,6 +941,8 @@ class Logging(LiteLLMLoggingBaseClass):
         return data
 
     def _get_masked_api_base(self, api_base: str) -> str:
+        if not api_base or not isinstance(api_base, str):
+            return api_base
         if "key=" in api_base:
             # Find the position of "key=" in the string
             key_index = api_base.find("key=") + 4
